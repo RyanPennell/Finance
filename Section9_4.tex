@@ -1,0 +1,49 @@
+\documentclass[12 pt, a4paper]{article}
+\usepackage{amsmath}
+\usepackage{tkz-euclide}
+\usetkzobj{all}
+\usepackage{bbding}
+\usepackage{pifont}
+\usepackage{wasysym}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usepackage{forest}
+\begin{document}
+\title{Mathematical Finance M551 \linebreak Section 9.4 Lecture Notes \linebreak Indiana University East}
+\author{}
+\date{}
+\maketitle
+Suppose $G$ denotes the present value gain from some investment. So if the interest rate is $r$, intial payment/investment is $C$, and $X$ is the return after one period, then
+$$G=\frac{x}{1+r}-C$$
+
+\textbf{Def:} The value at risk ($VAR$) of an investment is the value $|V|$ such that there is only a $1\%$ chance that the loss from the investment will be greater than $|v|$.
+\begin{figure}
+	\includegraphics[width=\linewidth]{Fig9_4_1.png}
+\caption{figure 1}
+	\label{fig: 1}
+\end{figure}
+Hence $v$ satisfies
+$$P(G<v)=0.01$$
+
+(\textit{We ussually interpret $v$ in terms of its magnitude, hence we will discuss $v$ in terms of $|v|$. That is, we would not say the $VAR$ is $-15$. We would say the $VAR$ is $15$. That is, There is a $1\%$ chance the investment will return an amount 'below' $-15$. This is the same as saying there is a $1\%$ chance our loss will be greater than $15$}).
+
+$VAR$ is important because it can be used as a measure of performance. We would prefer an incestment with small $VAR$:\\
+
+\begin{figure}
+\includegraphics[width=\linewidth]{fig2.png}
+\caption{figure 1}
+	\label{fig: 1}
+\end{figure}
+\textbf{Example} Suppose that the gain $G$ from an investment is a normal random varible with mean $\mu$ and standard dev $\sigma$. Let's determine the value at risk $|v|$. \\
+$$0.01=P(G<v)$$
+$$=P(\frac{G-\mu}{\sigma}<\frac{v-\mu}{\sigma})$$
+$$=P(z<\frac{v-\mu}{\sigma})$$
+From table 2.1 we see that $P(z<-2.33)=0.01$, hence
+$\frac{v-\mu}{\sigma}=-2.33$ which implies
+$v=-2.33\sigma+\mu=\mu-2.33\sigma$\\
+
+Hence there is a $1\%$ chance we will incur a loss from our investment
+greater than $|v|=|\mu-2.33\sigma|$.
+
+\end{document}
