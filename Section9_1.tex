@@ -1,0 +1,65 @@
+\documentclass[10 pt, a4paper]{article}
+\usepackage{amsmath}
+\usepackage{tkz-euclide}
+\usetkzobj{all}
+\usepackage{bbding}
+\usepackage{pifont}
+\usepackage{wasysym}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usepackage{forest}
+\begin{document}
+\title{Mathematical Finance M551 \linebreak Section 9.1 Lecture Notes \linebreak Indiana University East}
+\author{}
+\date{}
+\maketitle
+In this section, we provide an example of when a no-arbitrage cost for an option may not be unique.
+
+\textbf{Example:} Consider a stock with intial price $100$. After one period, the stock may either be $200,100$, or $50$. So we now allow for the possibity that the stock price stays the same (notice the difference with the model given in 5.1). Suppose we wish to price a call option with strike price $150$ (i.e. we have the option to buy stock for $150$ after $1$ period. Assume that interest rate is $0$ for simplicity.\\
+\begin{forest}
+	[100
+	[200]
+	[100]
+	[50]
+	]
+\end{forest}
+
+By the arbitrage theorem, we know arbitrage will not be present povidd there exist probabilities $P_{50},P_{100},P_{200}$ such that the expected gain when purchasing a stock or option is $0$. That is
+$$E[G_s]=0\quad \text{ and }\quad E[G_c]=0.$$
+
+Where $G_s$ denotes the gain at time $1$ from buying the stock and $G_c$ "  " buying the option. \\
+
+Hence,
+\[G_s=\begin{cases}
+	1000&if\quad S(1)=200\\
+	0&if\quad S(1)=100\\
+	-50&if\quad S(1)=50
+\end{cases}
+\]
+
+Which implies,
+$$E[G_s]=100P_{200}+0P_{100}+(-50)P_{50}$$
+
+If we let $C$ be the price of the option, \\
+
+then
+\[G_s=\begin{cases}
+	50-C&if\quad S(1)=200\\
+	-C&if\quad S(1)=100\quad\text{ or }S(1)=50
+\end{cases}
+\]
+
+
+So, $$E[G_c]=(50-C)P_200-CP_{50}-CP_{100}=50P_{200}-C$$
+
+For no arbitrage, we must have\\
+$0=E[G_s]$ and $0=E[G_c]$, thus\\
+$$E[G_s]=E[G_c]$$
+This implies
+$$P_{200}=\frac 12P_{50}\quad\text{ and }\quad C=50P_{200}$$
+but $P_{200}=\frac 12 P_{50}\implies P_{200}\leq \frac 13$
+(Since $P_{50}+P_{100}+P_{200}=1$). It follows that $0\leq C\leq\frac{50}{3}$.
+
+So the noarbitrage price $C$ in this case can be any value in the interval $[0,\frac{5)}{3}]$, hence it is not unique!
+\end{document}
